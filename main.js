@@ -1,4 +1,5 @@
 const rows = document.querySelector('.sketchpad');
+const gridArea = prompt ('What size grid to you want to work on? (Max of 100x100)');
 
 function makeRows (rowNum) {
     for (i = 0; i < rowNum; i++) {
@@ -20,9 +21,9 @@ function makeColumns(colNum) {
     }
 }
 
-function makeCanvas(rowNum, colNum) {
-    makeRows(16);
-    makeColumns(16);
+function makeCanvas() {
+    makeRows(gridArea);
+    makeColumns(gridArea);
 }
 
 makeCanvas();
@@ -64,5 +65,3 @@ function pen () {
 
 const colorSelect = document.querySelector('#colorSelect');
 colorSelect.addEventListener('click', pen);
-
-

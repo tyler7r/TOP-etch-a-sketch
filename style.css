@@ -5,19 +5,22 @@
 }
 .sketchpad {
     display: flex;
+    width: 640px;
+    height: 640px;
+    border: 1px solid black;
 }
 
 .gridRow {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    /* border-top: 1px solid black;
+    border-bottom: 1px solid black; */
 }
 
 .gridRow#num1 {
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
 }
 
 .gridRow#num16 {
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 
 .cell {
