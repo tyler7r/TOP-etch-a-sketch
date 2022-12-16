@@ -1,0 +1,35 @@
+.title {
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+}
+.sketchpad {
+    display: flex;
+    /* grid-template-columns: repeat(16, 16px [col-start]);
+    grid-template-rows: repeat(16, 16px [row-start]);
+    grid-column: auto;
+    grid-row: auto;
+    border: 2px solid black; */
+}
+
+.gridRow {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.gridRow#num1 {
+    border-left: 1px solid black;
+}
+
+.gridRow#num16 {
+    border-right: 1px solid black;
+}
+
+.cell {
+    /* border-top: 1px solid black;
+    border-bottom: 1px solid black; */
+    border: 1px solid black;
+    padding: 1px;
+    width: 12px;
+    height: 12px;
+}
