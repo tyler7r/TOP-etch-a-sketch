@@ -1,6 +1,4 @@
 const rows = document.querySelector('.sketchpad');
-const gridRow = document.querySelector('.sketchpad.gridRow');
-const cols = document.querySelector('.sketchpad');
 
 function makeRows (rowNum) {
     for (i = 0; i < rowNum; i++) {
@@ -32,6 +30,21 @@ makeCanvas();
 const cells = document.querySelectorAll('.cell');
 cells.forEach((cell) => {
     cell.addEventListener('click', () => {
-        cell.classList.toggle('fill');
+        cell.classList.add('fill');
     })
 })
+
+function clearCanvas () {
+    cells.forEach((cell) => {
+        cell.classList.remove('fill');
+    })
+}
+
+const clearBtn = document.querySelector('#clearBtn');
+clearBtn.addEventListener('click', clearCanvas);
+
+function eraserBtn () {
+    
+}
+
+
