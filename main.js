@@ -43,8 +43,26 @@ function clearCanvas () {
 const clearBtn = document.querySelector('#clearBtn');
 clearBtn.addEventListener('click', clearCanvas);
 
-function eraserBtn () {
-    
+function eraseCanvas () {
+    cells.forEach((cell) => {
+        cell.addEventListener('click', () => {
+            cell.classList.remove('fill');
+        })
+    })
 }
+
+const eraserBtn = document.querySelector('#eraserBtn');
+eraserBtn.addEventListener('click', eraseCanvas);
+
+function pen () {
+    cells.forEach((cell => {
+        cell.addEventListener('click', () => {
+            cell.classList.add('fill');
+        })
+    }))
+}
+
+const colorSelect = document.querySelector('#colorSelect');
+colorSelect.addEventListener('click', pen);
 
 
