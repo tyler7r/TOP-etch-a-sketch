@@ -34,10 +34,28 @@ function changeCellSize () {
 }
 
 const cells = document.querySelectorAll('.cell');
+let isDown = false;
+
 cells.forEach((cell) => {
-    cell.addEventListener('click', () => {
+    cell.addEventListener ('mousedown', () => {
+        isDown = true;
         cell.classList.add('fill');
     })
+})
+
+cells.forEach((cell) => {
+    cell.addEventListener ('mouseup', () => {
+        isDown = false;
+    })
+})
+
+cells.forEach((cell) => {
+    cell.addEventListener ('mouseover', () => {
+        console.log(isDown)
+        if (isDown === true) {
+            cell.classList.add('fill');
+        };
+})
 })
 
 function clearCanvas () {
