@@ -1,5 +1,5 @@
 const rows = document.querySelector('.sketchpad');
-const gridArea = prompt ('What size grid to you want to work on? (Max of 100x100)');
+const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
 
 function makeRows (rowNum) {
     for (i = 0; i < rowNum; i++) {
@@ -27,6 +27,11 @@ function makeCanvas() {
 }
 
 makeCanvas();
+
+function changeCellSize () {
+    const cellSize = document.querySelectorAll('.cell');
+    cellSize.style.height = '6px';
+}
 
 const cells = document.querySelectorAll('.cell');
 cells.forEach((cell) => {

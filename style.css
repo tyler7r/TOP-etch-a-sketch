@@ -11,8 +11,9 @@
 }
 
 .gridRow {
-    /* border-top: 1px solid black;
-    border-bottom: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .gridRow#num1 {
@@ -26,8 +27,7 @@
 .cell {
     border: 1px solid black;
     padding: 1px;
-    width: 12px;
-    height: 12px;
+    flex: 1;
 }
 
 .cell.fill {
