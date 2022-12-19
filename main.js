@@ -39,7 +39,7 @@ let isDown = false;
 cells.forEach((cell) => {
     cell.addEventListener ('mousedown', () => {
         isDown = true;
-        cell.classList.add('fill');
+        cell.classList.toggle('fill');
     })
 })
 
@@ -55,7 +55,7 @@ cells.forEach((cell) => {
         if (isDown === true) {
             cell.classList.add('fill');
         };
-})
+    })
 })
 
 function clearCanvas () {
@@ -69,9 +69,10 @@ clearBtn.addEventListener('click', clearCanvas);
 
 function eraseCanvas () {
     cells.forEach((cell) => {
-        cell.addEventListener('click', () => {
+        cell.addEventListener('mouseover', () => {
+            if(isDown === true) {
             cell.classList.remove('fill');
-        })
+        }})
     })
 }
 
@@ -80,9 +81,10 @@ eraserBtn.addEventListener('click', eraseCanvas);
 
 function pen () {
     cells.forEach((cell => {
-        cell.addEventListener('click', () => {
+        cell.addEventListener('mouseover', () => {
+            if(isDown === true) {
             cell.classList.add('fill');
-        })
+        }})
     }))
 }
 
