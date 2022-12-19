@@ -30,6 +30,10 @@
     flex: 1;
 }
 
-.cell.fill {
+.fill {
     background-color: black;
 }
+
+/* .cell.fill {
+    background-color: black;
+} */
