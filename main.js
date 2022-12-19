@@ -35,12 +35,17 @@ function changeCellSize () {
 
 const cells = document.querySelectorAll('.cell');
 let isDown = false;
+let eraseButtonClicked = false;
+let colorButtonClicked = false;
 
 cells.forEach((cell) => {
     cell.addEventListener ('mousedown', () => {
         isDown = true;
-        cell.classList.toggle('fill');
-    })
+        if (eraseButtonClicked === true) {
+        cell.classList.remove('fill');
+    } else if (eraseButtonClicked === false) {
+        cell.classList.add('fill');
+    }})
 })
 
 cells.forEach((cell) => {
@@ -68,6 +73,8 @@ const clearBtn = document.querySelector('#clearBtn');
 clearBtn.addEventListener('click', clearCanvas);
 
 function eraseCanvas () {
+    eraseButtonClicked = true;
+    colorButtonClicked = false;
     cells.forEach((cell) => {
         cell.addEventListener('mouseover', () => {
             if(isDown === true) {
@@ -80,6 +87,8 @@ const eraserBtn = document.querySelector('#eraserBtn');
 eraserBtn.addEventListener('click', eraseCanvas);
 
 function pen () {
+    colorButtonClicked = true;
+    eraseButtonClicked = false;
     cells.forEach((cell => {
         cell.addEventListener('mouseover', () => {
             if(isDown === true) {
