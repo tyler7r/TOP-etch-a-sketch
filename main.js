@@ -2,6 +2,7 @@ const rows = document.querySelector('.sketchpad');
 let fillColor = 'black';
 let canvasColor = 'white';
 const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
+const sketchpad = document.getElementsByClassName('sketchpad');
 
 function makeRows (rowNum) {
     for (i = 0; i < rowNum; i++) {
@@ -30,6 +31,13 @@ function makeCanvas() {
 
 makeCanvas();
 
+const gridRow = document.getElementById('num1');
+
+function removeGrid() {
+    let removeRow = document.removeElement('gridRow');
+    removeRow;
+}
+
 const cells = document.querySelectorAll('.cell');
 cells.forEach((cell) => {
     cell.style.backgroundColor = canvasColor;
@@ -37,7 +45,7 @@ cells.forEach((cell) => {
 // let cellColor = cells.style.backgroundColor;
 let isDown = false;
 let eraseButtonClicked = false;
-let colorButtonClicked = false;
+let colorButtonClicked = true;
 let filledCell = false;
 let rainbowPenBtnClicked = false;
 
@@ -94,7 +102,7 @@ function eraseCanvas () {
     rainbowPenBtnClicked = false;
     cells.forEach((cell) => {
         cell.addEventListener('mouseover', () => {
-            if(isDown === true) {
+            if(isDown === true && eraseButtonClicked === true) {
             // cell.classList.remove('fill');
             cell.style.backgroundColor = canvasColor;  
         }})
@@ -113,7 +121,7 @@ function pen () {
     rainbowPenBtnClicked = false;
     cells.forEach((cell => {
         cell.addEventListener('mouseover', () => {
-            if(isDown === true) {
+            if(isDown === true && colorButtonClicked === true) {
             cell.style.backgroundColor = fillColor;
             filledCell = true;
             // cell.classList.add('fill');
@@ -156,5 +164,19 @@ function rainbowPen () {
 
 const rainbowPenBtn = document.querySelector('#rainbowPen');
 rainbowPenBtn.addEventListener('click', rainbowPen);
+
+function resetCanvas() {
+    // rainbowPenBtnClicked = false;
+    // eraseButtonClicked = false;
+    // colorButtonClicked = true;
+    canvasColor = 'white';
+    cells.forEach((cell) => {
+        cell.style.backgroundColor = canvasColor;
+    })
+    fillColor = 'black';
+}
+
+const resetCanvasBtn = document.querySelector('#resetBtn');
+resetCanvasBtn.addEventListener('click', resetCanvas);
 
 // QUESTION, why couldn't i adjust .fill directly with style.backgroundColor? I kept getting a typeError that said that the style property was null?
