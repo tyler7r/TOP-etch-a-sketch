@@ -1,7 +1,7 @@
 const rows = document.querySelector('.sketchpad');
-const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
 let fillColor = 'black';
-let canvasColor = 'red';
+let canvasColor = 'white';
+const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
 
 function makeRows (rowNum) {
     for (i = 0; i < rowNum; i++) {
@@ -34,9 +34,12 @@ const cells = document.querySelectorAll('.cell');
 cells.forEach((cell) => {
     cell.style.backgroundColor = canvasColor;
 })
+// let cellColor = cells.style.backgroundColor;
 let isDown = false;
 let eraseButtonClicked = false;
 let colorButtonClicked = false;
+let filledCell = false;
+let rainbowPenBtnClicked = false;
 
 cells.forEach((cell) => {
     cell.addEventListener ('mousedown', () => {
@@ -44,9 +47,14 @@ cells.forEach((cell) => {
         if (eraseButtonClicked === true) {
         // cell.classList.remove('fill');
         cell.style.backgroundColor = canvasColor;
-    } else if (eraseButtonClicked === false) {
+        filledCell = false;
+    } else if (colorButtonClicked === true) {
         cell.style.backgroundColor = fillColor;
+        filledCell = true;
         // cell.classList.add('fill');
+    } else if (rainbowPenBtnClicked === true) {
+        cell.style.backgroundColor = getRandomColor();
+        filledCell = true;
     }})
 })
 
@@ -59,8 +67,12 @@ cells.forEach((cell) => {
 cells.forEach((cell) => {
     cell.addEventListener ('mouseover', () => {
         console.log(isDown)
-        if (isDown === true) {
+        if (isDown === true && rainbowPenBtnClicked === true) {
+            console.log(getRandomColor());
+            cell.style.backgroundColor = getRandomColor();
+        } else if (isDown === true) {
             cell.style.backgroundColor = fillColor;
+            filledCell = true;
             // cell.classList.add('fill');
         };
     })
@@ -69,6 +81,7 @@ cells.forEach((cell) => {
 function clearCanvas () {
     cells.forEach((cell) => {
         cell.style.backgroundColor = canvasColor;
+        filledCell = false;
     })
 }
 
@@ -78,6 +91,7 @@ clearBtn.addEventListener('click', clearCanvas);
 function eraseCanvas () {
     eraseButtonClicked = true;
     colorButtonClicked = false;
+    rainbowPenBtnClicked = false;
     cells.forEach((cell) => {
         cell.addEventListener('mouseover', () => {
             if(isDown === true) {
@@ -96,17 +110,51 @@ function pen () {
     fillColor = colorSelect;
     colorButtonClicked = true;
     eraseButtonClicked = false;
+    rainbowPenBtnClicked = false;
     cells.forEach((cell => {
         cell.addEventListener('mouseover', () => {
             if(isDown === true) {
             cell.style.backgroundColor = fillColor;
+            filledCell = true;
             // cell.classList.add('fill');
         }})
     }))
 }
 
 const colorSelect = document.querySelector('#colorSelect');
-colorSelect.addEventListener('click', pen);
+colorSelect.addEventListener('click', pen); 
 
+function canvasColorSelect () {
+    let input = prompt ('What color canvas do you want to work on?');
+    let canvasColorSelect = input.toLowerCase();
+    canvasColor = canvasColorSelect;
+    cells.forEach((cell) => {
+        cell.style.backgroundColor = canvasColor;
+    })
+}
+
+const canvasColorBtn = document.querySelector('#canvasColor');
+canvasColorBtn.addEventListener('click', canvasColorSelect);
+
+function getRandomColor () {
+    const randomColor = (Math.floor(Math.random()*16777215)).toString(16);
+    let getRandomColor = '#' + randomColor;
+    return getRandomColor;
+}
+
+function rainbowPen () {
+    rainbowPenBtnClicked = true;
+    eraseButtonClicked = false;
+    colorButtonClicked = false;
+    cells.forEach((cell) => {
+        if (isDown === true) {
+        cell.addEventListener('mouseover', () => {
+            cell.style.backgroundColor = getRandomColor();
+        });
+    }})
+}
+
+const rainbowPenBtn = document.querySelector('#rainbowPen');
+rainbowPenBtn.addEventListener('click', rainbowPen);
 
 // QUESTION, why couldn't i adjust .fill directly with style.backgroundColor? I kept getting a typeError that said that the style property was null?
