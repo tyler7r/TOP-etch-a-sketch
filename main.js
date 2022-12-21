@@ -29,26 +29,28 @@ function makeCanvas() {
 makeCanvas();
 createFunctionality();
 
-function removeGrid() {
-    let removeGrids = sketchpad.querySelectorAll('.gridRow');
-    removeGrids.forEach((cell) => cell.remove());
-}
+// function removeGrid() {
+//     let removeGrids = sketchpad.querySelectorAll('.gridRow');
+//     removeGrids.forEach((cell) => cell.remove());
+// }
 
-function canvasSize() {
-    removeGrid();
-    const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
-    makeRows(gridArea);
-    makeColumns(gridArea);
-    createFunctionality();
-}
+// function canvasSize() {
+//     removeGrid();
+//     const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
+//     makeRows(gridArea);
+//     makeColumns(gridArea);
+//     createFunctionality();
+// }
 
-const canvasAreaBtn = document.querySelector('#canvasAreaBtn');
-canvasAreaBtn.addEventListener('click', canvasSize);
+// const canvasAreaBtn = document.querySelector('#canvasAreaBtn');
+// canvasAreaBtn.addEventListener('click', canvasSize);
 
 
 function createFunctionality () {
     let fillColor = 'black';
-    let canvasColor = 'white';
+    let canvasColor = 'white'
+
+    document.querySelector('#canvasColorInput').value = '#ffffff';
 
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
@@ -57,9 +59,12 @@ function createFunctionality () {
     // let cellColor = cells.style.backgroundColor;
     let isDown = false;
     let eraseButtonClicked = false;
-    let colorButtonClicked = true;
+    let colorButtonClicked = false;
     let filledCell = false;
     let rainbowPenBtnClicked = false;
+
+    let colorButtonClicks = 0;
+    let canvasColorButtonClicks = 0;
 
     cells.forEach((cell) => {
         cell.addEventListener ('mousedown', () => {
@@ -75,7 +80,10 @@ function createFunctionality () {
         } else if (rainbowPenBtnClicked === true) {
             cell.style.backgroundColor = getRandomColor();
             filledCell = true;
-        }})
+        } else {
+            cell.style.backgroundColor = fillColor;
+        }
+        })
     })
 
     cells.forEach((cell) => {
@@ -125,9 +133,12 @@ function createFunctionality () {
     eraserBtn.addEventListener('click', eraseCanvas);
 
     function pen () {
-        let input = prompt('What color pen do you want to use?');
-        let colorSelect = input.toLowerCase();
-        fillColor = colorSelect;
+        // if (colorButtonClicked === false) {
+        let color = document.querySelector('#colorInput').value;
+        // let input = prompt('What color pen do you want to use?');
+        // let colorSelect = input.toLowerCase();
+        // console.log(colorSelect);
+        fillColor = color;
         colorButtonClicked = true;
         eraseButtonClicked = false;
         rainbowPenBtnClicked = false;
@@ -145,9 +156,11 @@ function createFunctionality () {
     colorSelect.addEventListener('click', pen); 
 
     function canvasColorSelect () {
-        let input = prompt ('What color canvas do you want to work on?');
-        let canvasColorSelect = input.toLowerCase();
-        canvasColor = canvasColorSelect;
+        let color = document.querySelector('#canvasColorInput').value;
+        canvasColor = color;
+        // let input = prompt ('What color canvas do you want to work on?');
+        // let canvasColorSelect = input.toLowerCase();
+        // canvasColor = canvasColorSelect;
         cells.forEach((cell) => {
             cell.style.backgroundColor = canvasColor;
         })
@@ -182,6 +195,8 @@ function createFunctionality () {
         // eraseButtonClicked = false;
         // colorButtonClicked = true;
         canvasColor = 'white';
+        document.querySelector('#canvasColorInput').value = '#ffffff';
+        document.querySelector('#colorInput').value = '#000000';
         cells.forEach((cell) => {
             cell.style.backgroundColor = canvasColor;
         })
@@ -191,4 +206,30 @@ function createFunctionality () {
     const resetCanvasBtn = document.querySelector('#resetBtn');
     resetCanvasBtn.addEventListener('click', resetCanvas);
 }
+
+function removeGrid() {
+    let removeGrids = rows.querySelectorAll('.gridRow');
+    removeGrids.forEach((cell) => cell.remove());
+}
+
+function canvasSize() {
+    removeGrid();
+    // const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
+    let size = document.querySelector('#canvasSize').value;
+    console.log(size);
+    let error = document.querySelector('.errors');
+    if (size > 2 && size < 100) {
+        makeRows(size);
+        makeColumns(size);
+        error.textContent = '';
+        createFunctionality();
+    } else {
+        error.textContent ='Error, entered number either too large or too small';
+        makeRows(16);
+        makeColumns(16);
+    }
+}
+
+const canvasAreaBtn = document.querySelector('#canvasAreaBtn');
+canvasAreaBtn.addEventListener('click', canvasSize);
 // QUESTION, why couldn't i adjust .fill directly with style.backgroundColor? I kept getting a typeError that said that the style property was null?
