@@ -1,41 +1,52 @@
+.content {
+    display: flex;
+    flex-direction: column;
+}
+.body {
+    display: flex;
+    justify-content: center;
+}
 .title {
     text-align: center;
     border-style: solid;
     border-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .sketchpad {
     display: flex;
-    width: 640px;
-    height: 640px;
     border: 1px solid black;
+    height: 550px;
+    min-width: 550px;
+    margin-left: 100px;
+    margin-right: 100px;
     justify-content: center;
-
 }
 
 .gridRow {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-
-.gridRow#num1 {
-    /* border-left: 1px solid black; */
-}
-
-.gridRow#num16 {
-    /* border-right: 1px solid black; */
+    justify-content: center;
+    justify-self: center;
+    text-align: center;
 }
 
 .cell {
     border: 1px solid black;
     padding: 1px;
     flex: 1;
+    display: flex;
+    text-align: center;
 }
 
 .fill {
     background-color: black;
 }
 
-/* .cell.fill {
-    background-color: black;
-} */
+.buttons{
+    display: flex;
+    justify-content: center;
+}

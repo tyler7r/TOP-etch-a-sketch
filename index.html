@@ -7,20 +7,22 @@
         <h1 class="title">Etch-a-Sketch</h1>
     </head>
     <body>
-        <div class ="sketchpad">
-            <!-- TOP suggests that I find a way to push each grid item into this div through JS -->
+        <div class="content">
+            <div class ="sketchpad">
+            </div>
+            <div class="buttons">
+                <button id="colorSelect">Change Pen Color</button>
+                <input type="color" id="colorInput">
+                <button id="eraserBtn">Eraser</button>
+                <button id="clearBtn">Clear</button>
+                <button id="canvasColor">Change Canvas Color</button>
+                <input type="color" id="canvasColorInput">
+                <button id="rainbowPen">Rainbow Pen</button>
+                <button id="resetBtn">Reset Settings</button>
         </div>
-        <div class="buttons">
-            <button id="colorSelect">Change Pen Color</button>
-            <input type="color" id="colorInput">
-            <button id="eraserBtn">Eraser</button>
-            <button id="clearBtn">Clear</button>
-            <button id="canvasColor">Change Canvas Color</button>
-            <input type="color" id="canvasColorInput">
-            <button id="rainbowPen">Rainbow Pen</button>
-            <button id="canvasAreaBtn">Change Canvas Size</button>
-            <button id="resetBtn">Reset Settings</button>
+        <div class="canvasArea"></div>
             <input type="text" id="canvasSize">
+            <button id="canvasAreaBtn">Change Canvas Size</button>
         </div>
         <div class="errors"> </div>
     </body>

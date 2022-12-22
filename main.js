@@ -29,22 +29,6 @@ function makeCanvas() {
 makeCanvas();
 createFunctionality();
 
-// function removeGrid() {
-//     let removeGrids = sketchpad.querySelectorAll('.gridRow');
-//     removeGrids.forEach((cell) => cell.remove());
-// }
-
-// function canvasSize() {
-//     removeGrid();
-//     const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
-//     makeRows(gridArea);
-//     makeColumns(gridArea);
-//     createFunctionality();
-// }
-
-// const canvasAreaBtn = document.querySelector('#canvasAreaBtn');
-// canvasAreaBtn.addEventListener('click', canvasSize);
-
 
 function createFunctionality () {
     let fillColor = 'black';
@@ -62,9 +46,6 @@ function createFunctionality () {
     let colorButtonClicked = false;
     let filledCell = false;
     let rainbowPenBtnClicked = false;
-
-    let colorButtonClicks = 0;
-    let canvasColorButtonClicks = 0;
 
     cells.forEach((cell) => {
         cell.addEventListener ('mousedown', () => {
@@ -218,7 +199,7 @@ function canvasSize() {
     let size = document.querySelector('#canvasSize').value;
     console.log(size);
     let error = document.querySelector('.errors');
-    if (size > 2 && size < 100) {
+    if (size >= 2 && size <= 100) {
         makeRows(size);
         makeColumns(size);
         error.textContent = '';
