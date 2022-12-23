@@ -40,6 +40,10 @@ function createFunctionality () {
     cells.forEach((cell) => {
         cell.style.backgroundColor = canvasColor;
     })
+
+    cells.forEach((cell) => {
+        cell.classList.add('border');
+    })
     // let cellColor = cells.style.backgroundColor;
     let isDown = false;
     let eraseButtonClicked = false;
@@ -192,6 +196,15 @@ function createFunctionality () {
 
     const resetCanvasBtn = document.querySelector('#resetBtn');
     resetCanvasBtn.addEventListener('click', resetCanvas);
+
+    function toggleGrid () {
+        cells.forEach((cell) =>{
+            cell.classList.toggle('border');
+        })
+    }
+    
+    const toggleGridBtn = document.querySelector('#toggleGridBtn');
+    toggleGridBtn.addEventListener('click', toggleGrid);
 }
 
 function removeGrid() {
