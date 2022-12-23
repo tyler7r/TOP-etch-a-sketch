@@ -2,10 +2,13 @@
     text-align: center;
     border-style: solid;
     border-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0px;
+    margin-bottom: 8px;
+    background-color: red;
+    color: white;
+    align-self: center;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 .sketchpad {
     display: flex;
