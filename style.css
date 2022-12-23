@@ -1,11 +1,3 @@
-.content {
-    display: flex;
-    flex-direction: column;
-}
-.body {
-    display: flex;
-    justify-content: center;
-}
 .title {
     text-align: center;
     border-style: solid;
@@ -23,30 +15,80 @@
     margin-left: 100px;
     margin-right: 100px;
     justify-content: center;
+    /* align-items: center; */
 }
 
 .gridRow {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    justify-content: center;
-    justify-self: center;
-    text-align: center;
+    justify-content: space-between;
 }
 
 .cell {
     border: 1px solid black;
     padding: 1px;
-    flex: 1;
+    flex: 0.5;
     display: flex;
     text-align: center;
+    /* align-self: center; */
 }
 
 .fill {
     background-color: black;
 }
 
+.canvasColorBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.penColorBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
 .buttons{
     display: flex;
     justify-content: center;
+    margin: 8px;
+    gap: 16px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.canvasArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvasSize {
+    max-width: 100px;
+    align-self: center;
+    flex: 1;
+    
+}
+
+#canvasAreaBtn {
+    max-width: 200px;
+    align-self: center;
+    flex: 1;
+}
+
+#canvasArea {
+    font-weight: bold;
+    text-align: center;
 }

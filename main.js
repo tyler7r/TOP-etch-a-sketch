@@ -115,10 +115,10 @@ function createFunctionality () {
 
     function pen () {
         // if (colorButtonClicked === false) {
-        let color = document.querySelector('#colorInput').value;
         // let input = prompt('What color pen do you want to use?');
         // let colorSelect = input.toLowerCase();
         // console.log(colorSelect);
+        let color = document.querySelector('#colorInput').value;
         fillColor = color;
         colorButtonClicked = true;
         eraseButtonClicked = false;
@@ -133,8 +133,12 @@ function createFunctionality () {
         }))
     }
 
-    const colorSelect = document.querySelector('#colorSelect');
-    colorSelect.addEventListener('click', pen); 
+    let colorInput = document.querySelector('#colorInput');
+    colorInput.addEventListener('input', pen);
+
+
+    // const colorSelect = document.querySelector('#colorSelect');
+    // colorSelect.addEventListener('click', pen); 
 
     function canvasColorSelect () {
         let color = document.querySelector('#canvasColorInput').value;
@@ -147,8 +151,11 @@ function createFunctionality () {
         })
     }
 
-    const canvasColorBtn = document.querySelector('#canvasColor');
-    canvasColorBtn.addEventListener('click', canvasColorSelect);
+    // const canvasColorBtn = document.querySelector('#canvasColor');
+    // canvasColorBtn.addEventListener('click', canvasColorSelect);
+
+    const cColorInput = document.querySelector('#canvasColorInput');
+    cColorInput.addEventListener('input', canvasColorSelect);
 
     function getRandomColor () {
         const randomColor = (Math.floor(Math.random()*16777215)).toString(16);
@@ -172,9 +179,8 @@ function createFunctionality () {
     rainbowPenBtn.addEventListener('click', rainbowPen);
 
     function resetCanvas() {
-        // rainbowPenBtnClicked = false;
-        // eraseButtonClicked = false;
-        // colorButtonClicked = true;
+        rainbowPenBtnClicked = false;
+        colorButtonClicked = true;
         canvasColor = 'white';
         document.querySelector('#canvasColorInput').value = '#ffffff';
         document.querySelector('#colorInput').value = '#000000';
@@ -204,6 +210,10 @@ function canvasSize() {
         makeColumns(size);
         error.textContent = '';
         createFunctionality();
+    } else if (size = NaN) {
+        error.textContent = '';
+        makeRows(16);
+        makeColumns(16);
     } else {
         error.textContent ='Error, entered number either too large or too small';
         makeRows(16);
@@ -211,6 +221,6 @@ function canvasSize() {
     }
 }
 
-const canvasAreaBtn = document.querySelector('#canvasAreaBtn');
-canvasAreaBtn.addEventListener('click', canvasSize);
+const canvasAreaBtn = document.querySelector('#canvasSize');
+canvasAreaBtn.addEventListener('input', canvasSize);
 // QUESTION, why couldn't i adjust .fill directly with style.backgroundColor? I kept getting a typeError that said that the style property was null?

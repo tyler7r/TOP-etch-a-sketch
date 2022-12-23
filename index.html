@@ -11,18 +11,22 @@
             <div class ="sketchpad">
             </div>
             <div class="buttons">
-                <button id="colorSelect">Change Pen Color</button>
-                <input type="color" id="colorInput">
+                <div class="penColorBtns">
+                    <input type="color" id="colorInput">
+                    <div class="penColor">Pen Color</div>
+                </div>
+                <div class="canvasColorBtns">
+                    <input type="color" id="canvasColorInput">
+                    <div class="canvasColor">Canvas Color</div>
+                </div>
+                <button id="rainbowPen">Rainbow Pen</button>
                 <button id="eraserBtn">Eraser</button>
                 <button id="clearBtn">Clear</button>
-                <button id="canvasColor">Change Canvas Color</button>
-                <input type="color" id="canvasColorInput">
-                <button id="rainbowPen">Rainbow Pen</button>
                 <button id="resetBtn">Reset Settings</button>
         </div>
         <div class="canvasArea"></div>
             <input type="text" id="canvasSize">
-            <button id="canvasAreaBtn">Change Canvas Size</button>
+            <div id="canvasArea">Change Canvas Size (Between 2 and 100)</div>
         </div>
         <div class="errors"> </div>
     </body>
