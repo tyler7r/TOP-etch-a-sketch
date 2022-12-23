@@ -204,18 +204,22 @@ function canvasSize() {
     // const gridArea = prompt ('What size grid do you want to work on? (Max of 100x100)');
     let size = document.querySelector('#canvasSize').value;
     console.log(size);
-    let error = document.querySelector('.errors');
+    let error = document.querySelector('#canvasArea');
     if (size >= 2 && size <= 100) {
         makeRows(size);
         makeColumns(size);
-        error.textContent = '';
+        error.textContent = 'Change Canvas Size (Between 2 and 100)';
         createFunctionality();
-    } else if (size = NaN) {
-        error.textContent = '';
+    } else if (size > 100) {
+        error.textContent = 'ERROR! Entered number is too large.';
+        makeRows(16);
+        makeColumns(16);
+    } else if (size < 2) {
+        error.textContent ='ERROR! Entered number is too small';
         makeRows(16);
         makeColumns(16);
     } else {
-        error.textContent ='Error, entered number either too large or too small';
+        error.textContent = 'Change Canvas Size (Between 2 and 100)'
         makeRows(16);
         makeColumns(16);
     }
